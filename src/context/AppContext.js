@@ -81,11 +81,11 @@ export const AppReducer = (state, action) => {
 const initialState = {
     budget: 2000,
     expenses: [
-        { id: "Marketing", name: 'Marketing', cost: 50 },
-        { id: "Finance", name: 'Finance', cost: 300 },
-        { id: "Sales", name: 'Sales', cost: 70 },
-        { id: "Human Resource", name: 'Human Resource', cost: 40 },
-        { id: "IT", name: 'IT', cost: 500 },
+        { id: "Accomodation", name: 'Accomodation', cost: 50 },
+        { id: "Food", name: 'Food', cost: 300 },
+        { id: "Clothes", name: 'Clothes', cost: 70 },
+        { id: "Facilities", name: 'Facilities', cost: 40 },
+        { id: "Accessoires", name: 'Accessoires', cost: 500 },
     ],
     currency: '£'
 };
