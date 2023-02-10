@@ -38,19 +38,17 @@ const ExpenseItem = (props) => {
     }
 
     const buttonStyles = {
-        margin: "0 auto",
-        borderRadius: '50%',
-        height: "2rem",
-        width: "2rem",
-        lineHeight: "0",
-        fontSize: "2rem",
-        fontWeight: "bold",
-        padding: "0",
         display: "flex",
         justifyContent: "center",
         alignItems: "center",
-        paddingTop: "0",
+        width: "2rem",
+        height: "2rem",
+        padding: '0',
         paddingBottom: "5px",
+        borderRadius: '50%',
+        lineHeight: "0",
+        fontSize: "2rem",
+        fontWeight: "bold",
     }
 
 

@@ -1,9 +1,18 @@
 
 import React, { createContext, useReducer } from 'react';
 
+let expensesItems = [
+    { id: "Accomodation", name: 'Accomodation', cost: 50 },
+    { id: "Food", name: 'Food', cost: 300 },
+    { id: "Clothes", name: 'Clothes', cost: 70 },
+    { id: "Facilities", name: 'Facilities', cost: 40 },
+    { id: "Accessoires", name: 'Accessoires', cost: 500 },
+];
+
 // 5. The reducer - this is used to update the state, based on the action
 export const AppReducer = (state, action) => {
     let budget = 0;
+
     switch (action.type) {
         case 'ADD_EXPENSE':
             let total_budget = 0;
@@ -70,7 +79,17 @@ export const AppReducer = (state, action) => {
             state.currency = action.payload;
             return {
                 ...state
-            }
+            };
+        case 'ADD_ALLOCATION':
+            action.type = "DONE";
+            state.expenses.push({
+                id: action.name,
+                name: action.name,
+                cost: action.cost,
+            });
+            return {
+                ...state
+            };
 
         default:
             return state;
@@ -80,13 +99,7 @@ export const AppReducer = (state, action) => {
 // 1. Sets the initial state when the app loads
 const initialState = {
     budget: 2000,
-    expenses: [
-        { id: "Accomodation", name: 'Accomodation', cost: 50 },
-        { id: "Food", name: 'Food', cost: 300 },
-        { id: "Clothes", name: 'Clothes', cost: 70 },
-        { id: "Facilities", name: 'Facilities', cost: 40 },
-        { id: "Accessoires", name: 'Accessoires', cost: 500 },
-    ],
+    expenses: expensesItems,
     currency: '£'
 };
 

@@ -6,6 +6,7 @@ import ExpenseList from './components/ExpenseList';
 import ExpenseTotal from './components/ExpenseTotal';
 import Remaining from './components/Remaining';
 import Currencies from './components/Currencies';
+import NewAllocation from './components/NewAllocation';
 import { AppProvider } from './context/AppContext';
 
 const App = () => {
@@ -14,19 +15,21 @@ const App = () => {
             <div className='container'>
                 {/* Add the code here to add the components          */}
                 <h2 className='mt-3'>Budget calculator</h2>
-                <div class='row mt-3'>
-                    <div class='col-sm'><Budget /></div>
-                    <div class='col-sm'><Remaining /></div>
-                    <div class='col-sm'><ExpenseTotal /></div>
-                    <div class='col-sm'><Currencies /></div>
+                <div className='row mt-3 position-sticky fixed-top pt-2 bg-white shadow-sm'>
+                    <div className='col-sm'><Budget /></div>
+                    <div className='col-sm'><Remaining /></div>
+                    <div className='col-sm'><ExpenseTotal /></div>
+                    <div className='col-sm'><Currencies /></div>
                 </div>
                 <h3 className='mt-3'>Allocation</h3>
-                <div class='row mt-3'>
-                    <div class='column'><ExpenseList /></div>
+                <div className='row mt-3'>
+                    <div className='column'><ExpenseList /></div>
                 </div>
+                <h3 className='mt-3'>Add new category</h3>
+                <div className="column"><NewAllocation /></div>
                 <h3 className='mt-3'>Change allocation</h3>
-                <div class='row mt-3'>
-                    <div class='column'><AllocationForm /></div>
+                <div className='row mt-3'>
+                    <div className='column'><AllocationForm /></div>
                 </div>
             </div>
         </AppProvider>

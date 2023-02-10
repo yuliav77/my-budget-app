@@ -1,12 +1,22 @@
 import React, { useContext, useState } from 'react';
+import Select from 'react-select';
 import { AppContext } from '../context/AppContext';
 
 const AllocationForm = (props) => {
-    const { dispatch,remaining,currency  } = useContext(AppContext);
+    const { dispatch,remaining,currency,expenses  } = useContext(AppContext);
 
     const [name, setName] = useState('');
     const [cost, setCost] = useState('');
     const [action, setAction] = useState('');
+
+    const expencesNames = expenses.map((expence)=>{
+        return {value: expence.id, label: expence.name};
+    })
+
+    const expencesActions = [
+        {value:"Add", label:"Add"},
+        {value:"Reduce", label:"Reduce"},
+    ];
 
     const handleSetCost = (cost) => {
         if(!/^[0-9]+$/.test(cost)){
@@ -45,30 +55,39 @@ const AllocationForm = (props) => {
             }
     };
 
+    const handleSelectCategory = (selectedOption) => {
+        setName(selectedOption.value);
+    };
+
+    const handleSelectAction = (selectedOption) => {
+        setAction(selectedOption.value);
+    };
+
     return (
         <div>
             <div className='row'>
 
-            <div className="input-group mb-3" style={{ marginLeft: '2rem' }}>
+                <div className="input-group mb-3">
                     <div className="input-group-prepend">
-                <label className="input-group-text" htmlFor="inputGroupSelect01">Department</label>
-                </div>
-                  <select className="custom-select" id="inputGroupSelect01" onChange={(event) => setName(event.target.value)}>
-                        <option defaultValue>Choose...</option>
-                        <option value="Accomodation" name="accomodation">Accomodation</option>
-                        <option value="Food" name="food">Food</option>
-                        <option value="Clothes" name="clothes">Clothes</option>
-                        <option value="Facilities" name="facilities">Facilities</option>
-                        <option value="Accessoires" name="accessoires">Accessoires</option>
-                  </select>
-
+                        <label className="input-group-text" htmlFor="inputGroupSelect01">Category</label>
+                    </div>
+                    <Select 
+                        className="custom-select"
+                        id="inputGroupSelect01"
+                        options={expencesNames} 
+                        placeholder={'Choose..'}
+                        menuPlacement='top'
+                        onChange={handleSelectCategory}
+                    />
                     <div className="input-group-prepend" style={{ marginLeft: '2rem' }}>
-                <label className="input-group-text" htmlFor="inputGroupSelect02">Allocation</label>
-                </div>
-                  <select className="custom-select" id="inputGroupSelect02" onChange={(event) => setAction(event.target.value)}>
-                        <option defaultValue value="Add" name="Add">Add</option>
-                         <option value="Reduce" name="Reduce">Reduce</option>
-                  </select>
+                        <label className="input-group-text" htmlFor="inputGroupSelect02">Allocation</label>
+                    </div>
+                    <Select
+                        options={expencesActions}
+                        defaultValue={expencesActions[0]}
+                        menuPlacement='top'
+                        onChange={handleSelectAction}
+                    />
                     <span style={{marginLeft: '2rem', marginRight: '0.2rem', display:'flex', alignItems:'center'}}>{currency}</span>
                     <input
                         required='required'
@@ -83,7 +102,7 @@ const AllocationForm = (props) => {
                         Save
                     </button>
                 </div>
-                </div>
+            </div>
 
         </div>
     );
