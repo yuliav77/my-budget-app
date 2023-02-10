@@ -2,18 +2,23 @@ import React, { useContext, useState } from 'react';
 import { AppContext } from '../context/AppContext';
 
 const NewAllocation = () => {
-    const { dispatch,currency } = useContext(AppContext);
+    const { dispatch,currency,expenses } = useContext(AppContext);
     const [name, setName] = useState('');
     const [cost, setCost] = useState(0);
     const addAllocation = () => {
         if (name) {
-            dispatch({
-                type: 'ADD_ALLOCATION',
-                name: name,
-                cost: parseInt(cost),
-            });    
-            setCost(0);
-            setName('');      
+            const dublicateCategory = expenses.filter((expense) => expense.id === name);
+            if (!dublicateCategory.length) {
+                dispatch({
+                    type: 'ADD_ALLOCATION',
+                    name: name,
+                    cost: parseInt(cost),
+                });    
+                setCost(0);
+                setName('');  
+            } else {
+                alert('This category is already existing!');
+            }
         } else {
             alert('Please, enter New Allocation name');
         }
