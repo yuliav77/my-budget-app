@@ -51,9 +51,9 @@ const AllocationForm = (props) => {
 
             <div className="input-group mb-3" style={{ marginLeft: '2rem' }}>
                     <div className="input-group-prepend">
-                <label className="input-group-text" htmlFor="inputGroupSelect01">Department</label>
+                <label className="input-group-text" htmlFor="inputDepartment">Department</label>
                 </div>
-                  <select className="custom-select" id="inputGroupSelect01" onChange={(event) => setName(event.target.value)}>
+                  <select className="custom-select" id="inputDepartment" onChange={(event) => setName(event.target.value)}>
                         <option defaultValue>Choose...</option>
                         <option value="Marketing" name="marketing"> Marketing</option>
                         <option value="Sales" name="sales">Sales</option>
@@ -64,9 +64,9 @@ const AllocationForm = (props) => {
                   </select>
 
                     <div className="input-group-prepend" style={{ marginLeft: '2rem' }}>
-                <label className="input-group-text" htmlFor="inputGroupSelect02">Allocation</label>
+                <label className="input-group-text" htmlFor="inputDepartment">Allocation</label>
                 </div>
-                  <select className="custom-select" id="inputGroupSelect02" onChange={(event) => setAction(event.target.value)}>
+                  <select className="custom-select" id="inputAllocation" onChange={(event) => setAction(event.target.value)}>
                         <option defaultValue value="Add" name="Add">Add</option>
                          <option value="Reduce" name="Reduce">Reduce</option>
                   </select>
@@ -74,13 +74,13 @@ const AllocationForm = (props) => {
                     <input
                         required='required'
                         type='number'
-                        id='cost'
+                        id='inputAmount'
                         value={cost}
                         style={{size: 10}}
                         onChange={(event) => handleSetCost(event.target.value)}>
                         </input>
                     
-                    <button className="btn btn-primary" onClick={submitEvent} style={{ marginLeft: '2rem' }}>
+                    <button className="btn btn-primary save-button" onClick={submitEvent} style={{ marginLeft: '2rem' }}>
                         Save
                     </button>
                 </div>

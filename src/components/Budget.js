@@ -24,7 +24,7 @@ const Budget = (props) => {
 
     return (
         <div className='alert alert-secondary'>
-            <span>Budget: {currency} <input
+            <span class="cost-limit">Budget: {currency} <input
                         required='required'
                         type='number'
                         max='20000'
