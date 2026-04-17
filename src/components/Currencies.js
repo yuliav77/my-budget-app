@@ -48,6 +48,7 @@ const Currencies = (props) => {
     }
     return (
         <Select 
+            id="currency-selector"
             options={currencies} 
             defaultValue={currencies[1]} 
             value={selectedOption} 
